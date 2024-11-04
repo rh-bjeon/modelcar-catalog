@@ -73,7 +73,8 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ inputs.image-name }}
-          tags: ${{ steps.version.outputs.main_tag }} ${{ steps.version.outputs.date_tag }}
+          # tags: ${{ steps.version.outputs.main_tag }} ${{ steps.version.outputs.date_tag }}
+          tags: ${{ steps.version.outputs.main_tag }} 
           context: ${{ inputs.context }}
           containerfiles: ${{ inputs.containerfile }}
           build-args: HF_TOKEN=${{ secrets.hf-token }}
