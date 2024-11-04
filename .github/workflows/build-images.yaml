@@ -17,8 +17,8 @@ jobs:
   build-mistral-image:
     uses: ./.github/workflows/workflow-build-image.yaml
     with:
-      registry: quay.io
-      image-name: redhat-ai-services / modelcar-catalog
+      registry: quay.io/redhat-ai-services
+      image-name: modelcar-catalog
       context: "mistral-7b-instruct-v0.3"
       tag: "mistral-7b-instruct-v0.3"
     secrets:
