@@ -15,7 +15,7 @@ on:
         required: false
         type: string
         default: ./Containerfile
-      tag-prefix:
+      tag:
         required: true
         type: string
     secrets:
@@ -50,7 +50,7 @@ jobs:
       - name: Extract version number
         id: version
         run: |
-          MAIN_TAG=${{ inputs.tag-prefix }}
+          MAIN_TAG=${{ inputs.tag }}
           echo "main_tag=$MAIN_TAG" | tee -a $GITHUB_OUTPUT
           DATE=$(date -u +'%Y%m%dt%H%Mz')
           echo "date=${DATE}" | tee -a $GITHUB_OUTPUT

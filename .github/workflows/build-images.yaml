@@ -20,7 +20,7 @@ jobs:
       registry: quay.io
       image-name: redhat-ai-services / modelcar-catalog
       context: "mistral-7b-instruct-v0.3"
-      tag-suffix: "mistral-7b-instruct-v0.3"
+      tag: "mistral-7b-instruct-v0.3"
     secrets:
       registry-username: ${{ secrets.REGISTRY_USERNAME }}
       registry-password: ${{ secrets.REGISTRY_PASSWORD }}
