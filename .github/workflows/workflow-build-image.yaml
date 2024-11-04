@@ -61,7 +61,7 @@ jobs:
         run: |
           PYPROJECT_FILE="${{ inputs.context }}/pyproject.toml"
           if [ -f ${PYPROJECT_FILE} ]; then
-            VERSION=$(awk 'NR==3 {print $3}' ${PYPROJECT_FILE} | tr -d '"')
+            VERSION=$(awk -F' = ' '/^version/ {gsub(/"/, "", $2); print $2}' ${PYPROJECT_FILE} | tr -d '"')
             echo "version=$VERSION" | tee -a $GITHUB_OUTPUT
           fi
 
