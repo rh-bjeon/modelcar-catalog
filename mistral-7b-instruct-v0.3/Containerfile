@@ -11,7 +11,7 @@ ENV MODEL_REPO="mistralai/Mistral-7B-Instruct-v0.3"
 RUN microdnf -y install git git-lfs python3-pip && \
     microdnf clean all
 
-COPY requirements.txt . 
+COPY requirements.txt .
 
 # Install Hugging Face libraries
 RUN pip3 install -r requirements.txt
