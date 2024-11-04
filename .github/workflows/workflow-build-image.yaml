@@ -1,0 +1,90 @@
+name: build-image
+on:
+  workflow_call:
+    inputs:
+      registry:
+        required: true
+        type: string
+      image-name:
+        required: true
+        type: string
+      context:
+        required: true
+        type: string
+      containerfile:
+        required: false
+        type: string
+        default: ./Containerfile
+      tag-prefix:
+        required: true
+        type: string
+    secrets:
+      registry-username:
+        required: true
+      registry-password:
+        required: true
+      hf-token:
+        required: false
+    outputs:
+      target_tag:
+        value: ${{ jobs.build-image.outputs.target_tag }}
+
+jobs:
+  build-image:
+    name: Build Image
+    runs-on: ubuntu-latest
+    outputs:
+      target_tag: ${{ steps.version.outputs.date_tag }}
+    steps:
+
+      - name: Checkout Repository
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: downgrade docker 
+        run: |
+          apt-cache madison docker.io
+          sudo apt-get remove containerd.io
+          sudo apt-get install docker.io=24.0.7-0ubuntu2~22.04.1
+
+      - name: Extract version number
+        id: version
+        run: |
+          MAIN_TAG=${{ inputs.tag-prefix }}
+          echo "main_tag=$MAIN_TAG" | tee -a $GITHUB_OUTPUT
+          DATE=$(date -u +'%Y%m%dt%H%Mz')
+          echo "date=${DATE}" | tee -a $GITHUB_OUTPUT
+          DATE_TAG=${MAIN_TAG}-${DATE}
+          echo "date_tag=${DATE_TAG}" | tee -a $GITHUB_OUTPUT
+
+      # - name: Image-Pull-Check
+      #   id: image_pull_check
+      #   run: |
+      #     podman login --username ${{ secrets.registry-username }} --password ${{ secrets.registry-password }} ${{ inputs.registry }}
+      #     if podman manifest inspect ${{ inputs.registry }}/${{ inputs.image-name }}:${{ steps.version.outputs.version }}; then
+      #       echo " Production Image Version " ${{ steps.version.outputs.version }} " already exists. Please increment the version in the VERSION file to proceed. "
+      #       exit 1
+      #     else
+      #       echo " Production image version does not exist, proceeding with new image build"
+      #     fi
+
+      - name: Setup and Build
+        id: build_image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          path_context: ${{ inputs.context }}
+          contaerfiles: ${{ inputs.containerfile }}
+          image: ${{ inputs.image-name }}
+          tags: ${{ steps.version.outputs.main_tag }} ${{ steps.version.outputs.date_tag }}
+          build-args: HF_TOKEN=${{ secrets.hf-token }}
+
+      - name: Push-Image
+        id: push-to-registry
+        if: steps.image_pull_check.outcome == 'success'
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build_image.outputs.image }}
+          tags: ${{ steps.build_image.outputs.tags }}
+          registry: ${{ inputs.registry }}
+          username: ${{ secrets.registry-username }}
+          password: ${{ secrets.registry-password }}
