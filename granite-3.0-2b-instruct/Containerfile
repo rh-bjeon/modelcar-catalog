@@ -22,10 +22,10 @@ COPY download_model.py .
 RUN python3 download_model.py
 
 # Final image containing only the essential model files
-FROM registry.access.redhat.com/ubi9/ubi-minimal:9.4
-
-# Copy only the necessary model files from the base image
-COPY --from=base /models /models
+FROM registry.access.redhat.com/ubi9/ubi-micro:9.4
 
 # Set the user to 1001
 USER 1001
+
+# Copy only the necessary model files from the base image
+COPY --from=base /models /models
