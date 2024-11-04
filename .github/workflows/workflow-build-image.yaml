@@ -84,17 +84,6 @@ jobs:
 
           echo "tags=${TAGS}" | tee -a $GITHUB_OUTPUT
 
-      # - name: Image-Pull-Check
-      #   id: image_pull_check
-      #   run: |
-      #     podman login --username ${{ secrets.registry-username }} --password ${{ secrets.registry-password }} ${{ inputs.registry }}
-      #     if podman manifest inspect ${{ inputs.registry }}/${{ inputs.image-name }}:${{ steps.version.outputs.version }}; then
-      #       echo " Production Image Version " ${{ steps.version.outputs.version }} " already exists. Please increment the version in the VERSION file to proceed. "
-      #       exit 1
-      #     else
-      #       echo " Production image version does not exist, proceeding with new image build"
-      #     fi
-
       - name: Setup and Build
         id: build_image
         uses: redhat-actions/buildah-build@v2
@@ -107,7 +96,6 @@ jobs:
 
       - name: Push-Image
         id: push-to-registry
-        if: steps.image_pull_check.outcome == 'success'
         uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build_image.outputs.image }}
