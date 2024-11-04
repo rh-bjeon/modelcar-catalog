@@ -8,12 +8,6 @@ on:
       - main
     paths:
       - huggingface-modelcar-builder/**
-    paths-ignore: 
-      - .github/**
-      - .gitignore
-      - LICENSE
-      - README.md
-      - docs/**
 
 jobs:
   build-huggingface-modelcar-builder-image:
