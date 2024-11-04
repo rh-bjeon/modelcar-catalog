@@ -13,16 +13,12 @@ on:
       - README.md
       - docs/**
 
-env:
-  REGISTRY: quay.io/redhat-ai-services
-  IMAGE_NAME: modelcar-catalog
-
 jobs:
   build-granite-image:
     uses: ./.github/workflows/workflow-build-image.yaml
     with:
-      registry: ${REGISTRY}
-      image-name: ${IMAGE_NAME}
+      registry: quay.io/redhat-ai-services
+      image-name: modelcar-catalog
       context: granite-3.0-2b-instruct
       containerfile: ./granite-3.0-2b-instruct/Containerfile
       tag: "granite-3.0-2b-instruct"
@@ -34,8 +30,8 @@ jobs:
   # build-mistral-image:
   #   uses: ./.github/workflows/workflow-build-image.yaml
   #   with:
-  #     registry: ${REGISTRY}
-  #     image-name: ${IMAGE_NAME}
+  #     registry: quay.io/redhat-ai-services
+  #     image-name: modelcar-catalog
   #     context: "mistral-7b-instruct-v0.3"
   #     containerfile: ./mistral-7b-instruct-v0.3/Containerfile
   #     tag: "mistral-7b-instruct-v0.3"
