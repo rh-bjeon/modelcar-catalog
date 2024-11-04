@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - huggingface-modelcar-builder/**
     paths-ignore: 
       - .github/**
       - .gitignore
@@ -14,18 +16,16 @@ on:
       - docs/**
 
 jobs:
-  build-granite-image:
+  build-huggingface-modelcar-builder-image:
     uses: ./.github/workflows/workflow-build-image.yaml
     with:
       registry: quay.io/redhat-ai-services
-      image-name: modelcar-catalog
-      context: granite-3.0-2b-instruct
-      containerfile: ./granite-3.0-2b-instruct/Containerfile
-      tag: "granite-3.0-2b-instruct"
+      image-name: huggingface-modelcar-builder
+      context: huggingface-modelcar-builder
+      push-latest: true
     secrets:
       registry-username: ${{ secrets.REGISTRY_USERNAME }}
       registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-      hf-token: ${{ secrets.HF_TOKEN }}
 
   # build-mistral-image:
   #   uses: ./.github/workflows/workflow-build-image.yaml

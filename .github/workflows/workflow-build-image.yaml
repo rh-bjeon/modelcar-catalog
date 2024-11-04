@@ -9,15 +9,24 @@ on:
         required: true
         type: string
       context:
-        required: true
+        required: false
         type: string
+        default: .
       containerfile:
         required: false
         type: string
         default: ./Containerfile
-      tag:
-        required: true
+      tag-base:
+        required: false
         type: string
+      tag-suffix:
+        required: false
+        type: string
+        default: ""
+      push-latest:
+        required: false
+        type: boolean
+        default: false
     secrets:
       registry-username:
         required: true
@@ -47,15 +56,33 @@ jobs:
       #     sudo apt-get remove containerd.io
       #     sudo apt-get install docker.io=24.0.7-0ubuntu2~22.04.1
 
-      - name: Extract version number
+      - name: Create tags
         id: version
         run: |
-          MAIN_TAG=${{ inputs.tag }}
+          PYPROJECT_FILE = "${{ inputs.context }}/pyproject.toml"
+          if [ -f ${PYPROJECT_FILE} ]; then
+            VERSION=$(awk 'NR==3 {print $3}' ${PYPROJECT_FILE} | tr -d '"')
+            echo "version=$VERSION" | tee -a $GITHUB_OUTPUT
+          fi
+
+          MAIN_TAG=${{ inputs.tag-base }}${VERSION}${{ inputs.tag-suffix }}
           echo "main_tag=$MAIN_TAG" | tee -a $GITHUB_OUTPUT
+          
           DATE=$(date -u +'%Y%m%dt%H%Mz')
           echo "date=${DATE}" | tee -a $GITHUB_OUTPUT
+          
           DATE_TAG=${MAIN_TAG}-${DATE}
           echo "date_tag=${DATE_TAG}" | tee -a $GITHUB_OUTPUT
+
+          TAGS="${MAIN_TAG} ${DATE_TAG}"
+
+          if ${{ inputs.push-latest }}; then
+            LATEST_TAG="latest${{ inputs.tag-suffix }}"
+            echo "latest_tag=${LATEST_TAG}" | tee -a $GITHUB_OUTPUT
+            TAGS="${TAGS} ${LATEST_TAG}"
+          fi
+
+          echo "tags=${TAGS}" | tee -a $GITHUB_OUTPUT
 
       # - name: Image-Pull-Check
       #   id: image_pull_check
@@ -73,9 +100,9 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ inputs.image-name }}
-          tags: ${{ steps.version.outputs.main_tag }} ${{ steps.version.outputs.date_tag }}
+          tags: ${{ steps.version.outputs.tags }}
           context: ${{ inputs.context }}
-          containerfiles: ${{ inputs.containerfile }}
+          containerfiles: ${{ inputs.context }}/${{ inputs.containerfile }}
           build-args: HF_TOKEN=${{ secrets.hf-token }}
 
       - name: Push-Image
