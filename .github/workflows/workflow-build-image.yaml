@@ -72,10 +72,10 @@ jobs:
         id: build_image
         uses: redhat-actions/buildah-build@v2
         with:
-          path_context: ${{ inputs.context }}
-          contaerfiles: ${{ inputs.containerfile }}
           image: ${{ inputs.image-name }}
           tags: ${{ steps.version.outputs.main_tag }} ${{ steps.version.outputs.date_tag }}
+          context: ${{ inputs.context }}
+          containerfiles: ${{ inputs.containerfile }}
           build-args: HF_TOKEN=${{ secrets.hf-token }}
 
       - name: Push-Image
