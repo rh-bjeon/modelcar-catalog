@@ -5,7 +5,7 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:9.4 as base
 ARG HF_TOKEN
 
 # The model repo to download
-ENV MODEL_REPO="mistralai/Mistral-7B-Instruct-v0.3"
+ENV MODEL_REPO="ibm-granite/granite-3.0-2b-instruct"
 
 # Install necessary Python dependencies
 RUN microdnf -y install git git-lfs python3-pip && \
