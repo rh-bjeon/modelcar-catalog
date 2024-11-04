@@ -24,3 +24,7 @@ Access to model mistralai/Mistral-7B-Instruct-v0.3 is restricted and you are not
 ```
 
 You must accept the terms and conditions on the model homepage.
+
+#### No Space Left on Device
+
+To build the model, you may require more storage to be allocated to the Podman VM.
