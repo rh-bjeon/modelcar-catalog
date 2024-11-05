@@ -2,6 +2,8 @@
 
 https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
 
+quay.io/redhat-ai-services/modelcar-catalog:mistral-7b-instruct-v0.3
+
 ## Building Image
 
 This model requires a user-token to authenticate with HuggingFace before pulling the model.  To generate a token, please refer to the [User access tokens](https://huggingface.co/docs/hub/en/security-tokens) documentation.
@@ -31,3 +33,9 @@ You must accept the terms and conditions on the model homepage.
 #### No Space Left on Device
 
 To build the model, you may require more storage to be allocated to the Podman VM.
+
+It can help to remove all unnecessary images with the following command:
+
+```
+podman image prune --all
+```
