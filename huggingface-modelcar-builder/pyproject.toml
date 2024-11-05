@@ -1,4 +1,4 @@
 [project]
 name = "huggingface-modelcar-builder"
 description = "A container image to help build modelcar images"
-version = "0.1.0"
+version = "0.2.0"

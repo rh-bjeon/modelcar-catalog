@@ -8,7 +8,8 @@ ARG HF_TOKEN
 ENV MODEL_REPO="mistralai/Mistral-7B-Instruct-v0.3"
 
 # Download the necessary model files (config.json, tokenizer.json, and safetensors)
-RUN python3 download_model.py
+RUN python3 download_model.py --model-repo ${MODEL_REPO} \
+    --allow-patterns "params.json" "consolidated.safetensors" "tokenizer.model.v3"
 
 # Final image containing only the essential model files
 FROM registry.access.redhat.com/ubi9/ubi-micro:9.4
