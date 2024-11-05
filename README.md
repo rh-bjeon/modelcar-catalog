@@ -4,7 +4,7 @@
 
 ## huggingface-modelcar-builder
 
-The `huggingface-modelcar-builder` is a 
+The `huggingface-modelcar-builder` is a helper container designed to make it easier to pull models from huggingface to build a modelcar container.
 
 ## Available Models
 
