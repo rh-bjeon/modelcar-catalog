@@ -11,7 +11,7 @@ This model requires a user-token to authenticate with HuggingFace before pulling
 Once your token has been created, be sure to accept the terms and conditions for this model on the model home page.
 
 ```
-podman build mistral-7b-instruct-v0.3  \
+podman build modelcar-images/mistral-7b-instruct-v0.3  \
     -t quay.io/redhat-ai-services/modelcar-catalog:mistral-7b-instruct-v0.3 \
     --build-arg HF_TOKEN="hf_..." \
     --platform linux/amd64

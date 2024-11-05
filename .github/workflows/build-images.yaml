@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - huggingface-modelcar-builder/**
+      - builder-images/huggingface-modelcar-builder/**
 
 jobs:
   build-huggingface-modelcar-builder-image:
@@ -15,7 +15,7 @@ jobs:
     with:
       registry: quay.io/redhat-ai-services
       image-name: huggingface-modelcar-builder
-      context: huggingface-modelcar-builder
+      context: builder-images/huggingface-modelcar-builder
       push-latest: true
     secrets:
       registry-username: ${{ secrets.REGISTRY_USERNAME }}
