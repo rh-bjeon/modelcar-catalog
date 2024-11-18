@@ -13,11 +13,11 @@ usage: download_model.py [-h] [-m MODEL_REPO] [-t TARGET_DIR] [-a ALLOW_PATTERNS
 options:
   -h, --help            show this help message and exit
   -m MODEL_REPO, --model-repo MODEL_REPO
-                        The model repo on huggingface
+                        (Required) The model repo on huggingface (default: None)
   -t TARGET_DIR, --target-dir TARGET_DIR
-                        The target directory to download the model
+                        (Optional) The target directory to download the model (default: ./models)
   -a ALLOW_PATTERNS [ALLOW_PATTERNS ...], --allow-patterns ALLOW_PATTERNS [ALLOW_PATTERNS ...]
-                        The allowed patterns to download
+                        (Optional) The allowed patterns to download (default: ['*.safetensors', '*.json', '*.txt'])
 ```
 
 You must provide a `MODEL_REPO` but `TARGET_DIR` and `ALLOW_PATTERNS` are optional.

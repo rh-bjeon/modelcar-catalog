@@ -22,21 +22,21 @@ def main(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
-        "-m", "--model-repo", help="The model repo on huggingface", type=str
+        "-m", "--model-repo", help="(Required) The model repo on huggingface", type=str
     )
     parser.add_argument(
         "-t",
         "--target-dir",
-        help="The target directory to download the model",
+        help="(Optional) The target directory to download the model",
         default="./models",
         type=str,
     )
     parser.add_argument(
         "-a",
         "--allow-patterns",
-        help="The allowed patterns to download",
+        help="(Optional) The allowed patterns to download",
         nargs="+",
         default=["*.safetensors", "*.json", "*.txt"],
     )
