@@ -25,3 +25,7 @@ helm upgrade -i granite-31-8b-instruct redhat-ai-services/vllm-kserve \
     --values modelcar-images/granite-3.1-8b-instruct/values.yaml \
     --values modelcar-images/granite-3.1-8b-instruct/values-a10g.yaml
 ```
+
+For more information on the above Helm Chart, you can find the source code for that chart here:
+
+https://github.com/redhat-ai-services/helm-charts/tree/main/charts/vllm-kserve
