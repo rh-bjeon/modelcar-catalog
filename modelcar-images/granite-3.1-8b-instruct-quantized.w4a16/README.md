@@ -4,6 +4,8 @@ https://huggingface.co/neuralmagic/granite-3.1-8b-instruct-quantized.w4a16
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct-quantized.w4a16
 
+https://neuralmagic.com/blog/introducing-compressed-granite-3-1-powerful-performance-in-a-small-package/
+
 ## Building Image
 
 ```
