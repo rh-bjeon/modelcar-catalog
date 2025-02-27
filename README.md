@@ -34,6 +34,18 @@ https://huggingface.co/ibm-granite/granite-3.1-8b-instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct
 
+### granite-3.1-8b-instruct-quantized.w4a16
+
+https://huggingface.co/neuralmagic/granite-3.1-8b-instruct-quantized.w4a16
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct-quantized.w4a16
+
+### granite-3.2-8b-instruct-preview
+
+https://huggingface.co/ibm-granite/granite-3.2-8b-instruct-preview
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct-preview
+
 ### llama-3.2-1b-instruct
 
 https://huggingface.co/ibm-granite/llama-3.2-1b-instruct
