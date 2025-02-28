@@ -12,6 +12,8 @@ quay.io/redhat-ai-services/huggingface-modelcar-builder:latest
 
 ## Available Models
 
+The following models are currently available in the modelcar catalog.
+
 ### granite-3.0-2b-instruct
 
 https://huggingface.co/ibm-granite/granite-3.0-2b-instruct
