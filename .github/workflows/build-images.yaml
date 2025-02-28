@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - builder-images/huggingface-modelcar-builder/**
   pull_request:
     branches:
       - main
@@ -20,16 +22,3 @@ jobs:
     secrets:
       registry-username: ${{ secrets.REGISTRY_USERNAME }}
       registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-
-  # build-mistral-image:
-  #   uses: ./.github/workflows/workflow-build-image.yaml
-  #   with:
-  #     registry: quay.io/redhat-ai-services
-  #     image-name: modelcar-catalog
-  #     context: "mistral-7b-instruct-v0.3"
-  #     containerfile: ./mistral-7b-instruct-v0.3/Containerfile
-  #     tag: "mistral-7b-instruct-v0.3"
-  #   secrets:
-  #     registry-username: ${{ secrets.REGISTRY_USERNAME }}
-  #     registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-  #     hf-token: ${{ secrets.HF_TOKEN }}
