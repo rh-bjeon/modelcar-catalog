@@ -8,6 +8,8 @@ The modelcar-catalog repo is designed to provide patterns for building ModelCar 
 
 The `huggingface-modelcar-builder` is a helper container designed to make it easier to pull models from huggingface to build a modelcar container.
 
+quay.io/redhat-ai-services/huggingface-modelcar-builder:latest
+
 ## Available Models
 
 ### granite-3.0-2b-instruct
