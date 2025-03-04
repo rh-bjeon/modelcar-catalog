@@ -1,18 +1,14 @@
-# Granite-3.2-8b-instruct-preview
+# granite-3.2-2b-instruct
 
-DEPRECIATED
+https://huggingface.co/ibm-granite/granite-3.2-2b-instruct
 
-Use granite-3.2-8b-instruct instead.
-
-https://huggingface.co/ibm-granite/granite-3.2-8b-instruct-preview
-
-quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct-preview
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-2b-instruct
 
 ## Building Image
 
 ```
-podman build modelcar-images/granite-3.2-8b-instruct-preview \
-    -t quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct-preview  \
+podman build modelcar-images/granite-3.2-2b-instruct \
+    -t quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-2b-instruct  \
     --platform linux/amd64
 ```
 
@@ -26,8 +22,8 @@ This configuration includes some specific configurations to deploy it on an NVID
 helm repo add redhat-ai-services https://redhat-ai-services.github.io/helm-charts/
 helm repo update redhat-ai-services
 helm upgrade -i granite-31-8b-instruct redhat-ai-services/vllm-kserve \
-    --values modelcar-images/granite-3.2-8b-instruct-preview/values.yaml \
-    --values modelcar-images/granite-3.2-8b-instruct-preview/values-a10g.yaml
+    --values modelcar-images/granite-3.2-2b-instruct/values.yaml \
+    --values modelcar-images/granite-3.2-2b-instruct/values-a10g.yaml
 ```
 
 For more information on the above Helm Chart, you can find the source code for that chart here:
