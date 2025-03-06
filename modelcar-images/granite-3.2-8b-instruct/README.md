@@ -21,7 +21,7 @@ This configuration includes some specific configurations to deploy it on an NVID
 ```
 helm repo add redhat-ai-services https://redhat-ai-services.github.io/helm-charts/
 helm repo update redhat-ai-services
-helm upgrade -i granite-31-8b-instruct redhat-ai-services/vllm-kserve \
+helm upgrade -i granite-32-8b-instruct redhat-ai-services/vllm-kserve \
     --values modelcar-images/granite-3.2-8b-instruct/values.yaml \
     --values modelcar-images/granite-3.2-8b-instruct/values-a10g.yaml
 ```
