@@ -1,0 +1,5 @@
+inferenceService:
+  args:
+    - "--max-model-len=19000"
+    - "--max-num-seqs=10"
+    - "--enforce-eager"

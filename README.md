@@ -62,6 +62,12 @@ https://huggingface.co/ibm-granite/llama-3.2-1b-instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-1b-instruct
 
+### llama-3.2-11b-vision-instruct-fp8-dynamic
+
+neuralmagic/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
+
 ### mistral-7b-instruct-v0.3
 
 https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
