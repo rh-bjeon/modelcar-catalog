@@ -1,0 +1,4 @@
+inferenceService:
+  storage:
+    mode: uri
+    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-7b-instruct
