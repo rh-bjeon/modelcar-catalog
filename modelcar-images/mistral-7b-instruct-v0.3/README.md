@@ -1,5 +1,7 @@
 # Mistral-7b-instruct-v0.3
 
+This model is untested and may have some issues.  Please feel free to contribute a PR to help fix any issues you encounter.
+
 https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
 
 quay.io/redhat-ai-services/modelcar-catalog:mistral-7b-instruct-v0.3
