@@ -1,6 +1,6 @@
 # Llama-3.2-1B-Instruct
 
-https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/tree/main
+https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct/
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-1b-instruct
 
