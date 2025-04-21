@@ -1,0 +1,4 @@
+inferenceService:
+  storage:
+    mode: uri
+    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct-quantized.w8a8
