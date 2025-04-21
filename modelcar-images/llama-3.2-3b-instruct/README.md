@@ -11,9 +11,10 @@ This model requires a user-token to authenticate with HuggingFace before pulling
 Once your token has been created, be sure to accept the terms and conditions for this model on the model home page.
 
 ```
+export HF_TOKEN="hf_..."
 podman build modelcar-images/llama-3.2-3b-instruct \
-    -t quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-Instruct \
-    --build-arg HF_TOKEN="hf_..." \
+    -t quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct \
+    --build-arg HF_TOKEN=$HF_TOKEN \
     --platform linux/amd64
 ```
 
