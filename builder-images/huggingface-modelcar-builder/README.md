@@ -7,7 +7,7 @@
 The download_model script contains the following options:
 
 ```
-python download_model.py -h         
+python download_model.py -h
 usage: download_model.py [-h] [-m MODEL_REPO] [-t TARGET_DIR] [-a ALLOW_PATTERNS [ALLOW_PATTERNS ...]]
 
 options:

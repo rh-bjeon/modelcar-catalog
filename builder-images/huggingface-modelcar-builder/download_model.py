@@ -1,15 +1,13 @@
-import os
-from typing import List
-
 import argparse
 
 from huggingface_hub import snapshot_download
 
+
 def main(
     model_repo: str,
     local_dir: str = "./models",
-    allow_patterns: List[str] = ["*.safetensors", "*.json", "*.txt"],
-):
+    allow_patterns: list[str] = ["*.safetensors", "*.json", "*.txt"],
+) -> None:
     print(f"Attempting to download the following model from huggingface: {model_repo}")
     print(f"Target director: {local_dir}")
     print(f"With allow-patterns: {allow_patterns}")
@@ -22,7 +20,9 @@ def main(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
     parser.add_argument(
         "-m", "--model-repo", help="(Required) The model repo on huggingface", type=str
     )
