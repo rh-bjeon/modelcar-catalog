@@ -56,15 +56,51 @@ https://huggingface.co/ibm-granite/granite-3.2-8b-instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct
 
+### granite-3.3-2b-instruct
+
+https://huggingface.co/ibm-granite/granite-3.3-2b-instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-2b-instruct
+
+### granite-3.3-8b-instruct
+
+https://huggingface.co/ibm-granite/granite-3.3-8b-instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
+
+### granite-4.0-tiny-preview
+
+https://huggingface.co/ibm-granite/granite-4.0-tiny-preview
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-tiny-preview
+
 ### llama-3.2-1b-instruct
 
 https://huggingface.co/ibm-granite/llama-3.2-1b-instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-1b-instruct
 
+### llama-3.2-3b-instruct
+
+https://huggingface.co/ibm-granite/llama-3.2-3b-instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct
+
+### llama-3.2-3b-instruct-quantized.w8a8
+
+https://huggingface.co/ibm-granite/llama-3.2-3b-instruct-quantized.w8a8
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct-quantized.w8a8
+
+### llama-3.2-8b-instruct-quantized.w4a16
+
+https://huggingface.co/ibm-granite/llama-3.2-8b-instruct-quantized.w4a16
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-8b-instruct-quantized.w4a16
+
 ### llama-3.2-11b-vision-instruct-fp8-dynamic
 
-neuralmagic/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
+https://huggingface.co/neuralmagic/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
 
@@ -73,6 +109,18 @@ quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dy
 https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
 
 quay.io/redhat-ai-services/modelcar-catalog:mistral-7b-instruct-v0.3
+
+### qwen2.5-0.5b-instruct
+
+https://huggingface.co/qwen/qwen2.5-0.5b-instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-0.5b-instruct
+
+### qwen2.5-7b-instruct
+
+https://huggingface.co/qwen/qwen2.5-7b-instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-7b-instruct
 
 ### sparse-llama-3.1-8b-2of4
 
