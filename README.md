@@ -127,3 +127,15 @@ quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-7b-instruct
 https://huggingface.co/ibm-granite/sparse-llama-3.1-8b-2of4
 
 quay.io/redhat-ai-services/modelcar-catalog:sparse-llama-3.1-8b-2of4
+
+### whisper-large-v2
+
+https://huggingface.co/openai/whisper-large-v2
+
+quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v2
+
+### whisper-large-v2-w4a16-g128
+
+https://huggingface.co/RedHatAI/whisper-large-v2-W4A16-G128
+
+quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v2-w4a16-g128
