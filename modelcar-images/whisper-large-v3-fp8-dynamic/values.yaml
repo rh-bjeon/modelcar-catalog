@@ -1,0 +1,4 @@
+inferenceService:
+  storage:
+    mode: uri
+    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v3-fp8-dynamic
