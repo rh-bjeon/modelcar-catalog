@@ -1,0 +1,4 @@
+inferenceService:
+  storage:
+    mode: uri
+    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:granite-guardian-3.2-5b
