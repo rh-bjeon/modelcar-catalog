@@ -6,8 +6,10 @@ from huggingface_hub import snapshot_download
 def main(
     model_repo: str,
     local_dir: str = "./models",
-    allow_patterns: list[str] = ["*.safetensors", "*.json", "*.txt"],
+    allow_patterns: list[str] = None,
 ) -> None:
+    if allow_patterns is None:
+        allow_patterns = ["*.safetensors", "*.json", "*.txt"]
     print(f"Attempting to download the following model from huggingface: {model_repo}")
     print(f"Target director: {local_dir}")
     print(f"With allow-patterns: {allow_patterns}")
