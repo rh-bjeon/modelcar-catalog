@@ -1,4 +1,3 @@
-inferenceService:
-  storage:
-    mode: uri
-    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct
+model:
+  mode: uri
+  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.3-8b-instruct

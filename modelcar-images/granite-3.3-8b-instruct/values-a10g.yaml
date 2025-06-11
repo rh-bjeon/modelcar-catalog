@@ -1,4 +1,4 @@
-inferenceService:
+model:
   args:
     - "--gpu-memory-utilization=0.99"
     - "--max-model-len=24500"
