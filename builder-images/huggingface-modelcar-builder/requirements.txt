@@ -1,2 +1,3 @@
 argparse
 huggingface-hub
+hf-xet
