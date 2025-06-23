@@ -1,7 +1,6 @@
-inferenceService:
-  storage:
-    mode: uri
-    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
+model:
+  mode: uri
+  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
   resources:
     limits:
       cpu: 4

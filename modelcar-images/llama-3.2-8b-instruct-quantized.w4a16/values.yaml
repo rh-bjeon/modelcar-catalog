@@ -1,7 +1,6 @@
-inferenceService:
-  storage:
-    mode: uri
-    storageUri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-8b-instruct-quantized.w4a16
+model:
+  mode: uri
+  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-8b-instruct-quantized.w4a16
   resources:
     limits:
       cpu: 4
