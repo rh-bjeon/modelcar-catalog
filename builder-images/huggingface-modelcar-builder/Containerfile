@@ -7,7 +7,10 @@ COPY requirements.txt .
 
 # Install necessary Python dependencies
 RUN microdnf -y install git git-lfs python3-pip && \
-    microdnf clean all && \
-    pip3 install -r requirements.txt
+    microdnf clean all
+
+USER 1001
+
+RUN pip3 install -r requirements.txt
 
 COPY download_model.py .
