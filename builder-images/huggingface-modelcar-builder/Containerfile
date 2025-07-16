@@ -11,5 +11,3 @@ RUN microdnf -y install git git-lfs python3-pip && \
     pip3 install -r requirements.txt
 
 COPY download_model.py .
-
-USER 1001
