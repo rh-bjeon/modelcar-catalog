@@ -1,3 +1,3 @@
 model:
   mode: uri
-  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct
+  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-2b-instruct
