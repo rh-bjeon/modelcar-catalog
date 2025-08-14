@@ -1,8 +1,8 @@
 # Base image for the modelcar Granite image
-FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
+FROM quay.io/redhat-ai-services/huggingface-downloader:0.2.2-20250623t1535z as base
 
 # The model repo to download
-ENV MODEL_REPO="ibm-granite/granite-3.1-2b-instruct"
+ENV MODEL_REPO="Qwen/Qwen3-14b"
 
 # Download the necessary model files
 RUN python3 download_model.py --model-repo ${MODEL_REPO}

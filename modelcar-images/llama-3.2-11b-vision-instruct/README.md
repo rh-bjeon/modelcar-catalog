@@ -1,0 +1,28 @@
+# llama-3.2-11b-vision-instruct
+
+https://huggingface.co/neuralmagic/Llama-3.2-11B-Vision-Instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct
+
+## Building Image
+
+```
+podman build modelcar-images/llama-3.2-11b-vision-instruct \
+    -t quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct  \
+    --platform linux/amd64
+```
+
+## Deploying Model
+
+This model can be deployed using vLLM on OpenShift AI using the following Helm Chart.
+
+```
+helm repo add redhat-ai-services https://redhat-ai-services.github.io/helm-charts/
+helm repo update redhat-ai-services
+helm upgrade -i llama-32-11b redhat-ai-services/vllm-kserve \
+    --values modelcar-images/llama-3.2-11b-vision-instruct/values.yaml
+```
+
+For more information on the above Helm Chart, you can find the source code for that chart here:
+
+https://github.com/redhat-ai-services/helm-charts/tree/main/charts/vllm-kserve
