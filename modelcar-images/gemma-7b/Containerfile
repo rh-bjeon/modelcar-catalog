@@ -1,8 +1,11 @@
-# Base image for the modelcar Granite image
+# Base image for the modelcar Gemma image
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
+# Set the HF_TOKEN with --build-arg HF_TOKEN="hf_..." at build time
+ARG HF_TOKEN
+
 # The model repo to download
-ENV MODEL_REPO="ibm-granite/granite-3.1-2b-instruct"
+ENV MODEL_REPO="google/gemma-7b"
 
 # Download the necessary model files
 RUN python3 download_model.py --model-repo ${MODEL_REPO}

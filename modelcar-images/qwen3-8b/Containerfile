@@ -2,7 +2,7 @@
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
 # The model repo to download
-ENV MODEL_REPO="ibm-granite/granite-3.1-2b-instruct"
+ENV MODEL_REPO="Qwen/Qwen3-8b"
 
 # Download the necessary model files
 RUN python3 download_model.py --model-repo ${MODEL_REPO}

@@ -1,5 +1,5 @@
 # Base image for the modelcar Granite image
-FROM quay.io/redhat-ai-services/huggingface-modelcar-builder:latest as base
+FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
 # The model repo to download
 ENV MODEL_REPO="Qwen/Qwen2.5-0.5B-Instruct"
