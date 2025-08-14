@@ -4,20 +4,20 @@ on:
     branches:
       - main
     paths:
-      - builder-images/huggingface-downloader/**
+      - builder-images/huggingface-modelcar-builder/**
   pull_request:
     branches:
       - main
     paths:
-      - builder-images/huggingface-downloader/**
+      - builder-images/huggingface-modelcar-builder/**
 
 jobs:
-  build-huggingface-downloader-image:
+  build-huggingface-modelcar-builder-image:
     uses: ./.github/workflows/workflow-build-image.yaml
     with:
       registry: quay.io/redhat-ai-services
-      image-name: huggingface-downloader
-      context: builder-images/huggingface-downloader
+      image-name: huggingface-modelcar-builder
+      context: builder-images/huggingface-modelcar-builder
       push-latest: true
     secrets:
       registry-username: ${{ secrets.REGISTRY_USERNAME }}

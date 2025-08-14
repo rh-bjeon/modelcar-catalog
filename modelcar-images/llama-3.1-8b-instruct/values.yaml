@@ -1,8 +1,0 @@
-model:
-  mode: uri
-  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
-  resources:
-    limits:
-      cpu: 4
-      memory: 16Gi
-      nvidia.com/gpu: '1'
