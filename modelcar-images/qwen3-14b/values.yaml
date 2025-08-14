@@ -1,3 +1,0 @@
-model:
-  mode: uri
-  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:qwen3-14b

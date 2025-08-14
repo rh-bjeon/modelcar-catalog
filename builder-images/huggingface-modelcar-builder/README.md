@@ -1,6 +1,6 @@
-# huggingface-downloader
+# Huggingface-modelcar-builder
 
-[![GitHub](https://img.shields.io/badge/GitHub-repo-blue.svg)](https://github.com/redhat-ai-services/modelcar-catalog/tree/main/huggingface-downloader) [![Quay.io](https://img.shields.io/badge/Quay.io-image-blue.svg)](https://quay.io/repository/redhat-ai-services/huggingface-downloader)
+[![GitHub](https://img.shields.io/badge/GitHub-repo-blue.svg)](https://github.com/redhat-ai-services/modelcar-catalog/tree/main/huggingface-modelcar-builder) [![Quay.io](https://img.shields.io/badge/Quay.io-image-blue.svg)](https://quay.io/repository/redhat-ai-services/huggingface-modelcar-builder)
 
 ## download_model
 
@@ -33,7 +33,7 @@ You can optionally update those filters for what the model you are attempting to
 ## Build Example
 
 ```
-FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
+FROM quay.io/redhat-ai-services/huggingface-modelcar-builder:latest as base
 
 # Set the HF_TOKEN with --build-arg HF_TOKEN="hf_..." at build time
 ARG HF_TOKEN

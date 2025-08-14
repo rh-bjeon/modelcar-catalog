@@ -4,11 +4,11 @@
 
 The modelcar-catalog repo is designed to provide patterns for building ModelCar images for commonly used LLMs.  Be sure to check out the [modelcar-catalog registry](https://quay.io/repository/redhat-ai-services/modelcar-catalog) to find many of these images pre-built and ready to use.
 
-## huggingface-downloader
+## huggingface-modelcar-builder
 
-The `huggingface-downloader` is a helper container designed to make it easier to pull models from huggingface to build a modelcar container.
+The `huggingface-modelcar-builder` is a helper container designed to make it easier to pull models from huggingface to build a modelcar container.
 
-quay.io/redhat-ai-services/huggingface-downloader:latest
+quay.io/redhat-ai-services/huggingface-modelcar-builder:latest
 
 ## Available Models
 
