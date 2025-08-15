@@ -13,6 +13,10 @@ MODELCAR_IMAGES = ./modelcar-images
 # Ensure each recipe runs in a single shell so variables persist across lines
 .ONESHELL:
 
+# Use strict shell flags: exit on error, treat unset variables as error, fail on pipe errors
+SHELL := /bin/bash
+.SHELLFLAGS := -euo pipefail -c
+
 build:
 	@if [ -z "$(folder)" ]; then
 		echo "Usage: make build folder=<path-to-folder>"
