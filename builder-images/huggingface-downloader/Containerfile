@@ -13,4 +13,4 @@ RUN microdnf -y install git git-lfs python3-pip && \
 
 COPY download_model.py .
 
-CMD ["python3", "download_model.py", "--model-repo", ${MODEL_REPO}]
+CMD ["/usr/bin/python3", "download_model.py", "--model-repo", ${MODEL_REPO}]
