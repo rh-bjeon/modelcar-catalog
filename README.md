@@ -10,6 +10,104 @@ The `huggingface-downloader` is a helper container designed to make it easier to
 
 quay.io/redhat-ai-services/huggingface-downloader:latest
 
+## Using the Makefile
+
+The project includes a Makefile that simplifies building, downloading, and pushing ModelCar images. Below are the available targets and their usage.
+
+### Prerequisites
+
+- `podman` installed and configured
+- Access to `quay.io/redhat-ai-services` registry for pushing (optional)
+- HuggingFace token for private models (optional)
+
+### Available Targets
+
+#### Build a Model Image
+
+Build a ModelCar image for a specific model:
+
+```bash
+make build folder=modelcar-images/<model-name>
+```
+
+Example:
+```bash
+make build folder=modelcar-images/granite-3.1-8b-instruct
+```
+
+If the model directory contains a `downloader.env` file, the build process will automatically download the model first.  Alternatively, models that use a two stage build process will download and build the model in a single shot.
+
+#### Download Model Files
+
+Download model files locally without building the image:
+
+```bash
+make download folder=modelcar-images/<model-name>
+```
+
+This requires a `downloader.env` file in the model directory specifying the `MODEL_REPO`.
+
+#### Add Date Tag
+
+Add a timestamped tag to an existing image:
+
+```bash
+make date-tag folder=modelcar-images/<model-name>
+```
+
+This creates a tag like `model-name-20240815t1234z` alongside the base tag.
+
+#### Push Images
+
+Push all tags for a model to the registry:
+
+```bash
+make push folder=modelcar-images/<model-name>
+```
+
+This pushes both the base tag and any date-tagged versions.
+
+#### Build and Push
+
+Build and push a model in one command:
+
+```bash
+make build-and-push folder=modelcar-images/<model-name>
+```
+
+#### Build and Push All Models
+
+Build and push all models in the catalog:
+
+```bash
+make build-and-push-all
+```
+
+**Warning:** This processes all models and can take a very long time.
+
+### Using HuggingFace Token
+
+For private models or to avoid rate limiting, set the `HF_TOKEN` environment variable:
+
+```bash
+export HF_TOKEN=your_token_here
+make build folder=modelcar-images/<model-name>
+```
+
+The token will be passed to both the download and build processes.
+
+### Clean Up
+
+Remove all downloaded model files:
+```bash
+make clean-all
+```
+
+Remove a specific image and prune containers:
+```bash
+make prune folder=modelcar-images/<model-name>
+```
+
 ## Available Models
 
 The following models are currently available in the modelcar catalog.
