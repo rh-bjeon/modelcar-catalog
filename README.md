@@ -40,9 +40,15 @@ quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct
 
 ### granite-3.1-8b-instruct-quantized.w4a16
 
-https://huggingface.co/neuralmagic/granite-3.1-8b-instruct-quantized.w4a16
+https://huggingface.co/redhatai/granite-3.1-8b-instruct-quantized.w4a16
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct-quantized.w4a16
+
+### granite-3.1-8b-instruct-quantized.w8a8
+
+https://huggingface.co/redhatai/granite-3.1-8b-instruct-quantized.w8a8
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct-quantized.w8a8
 
 ### granite-3.2-2b-instruct
 
@@ -74,33 +80,57 @@ https://huggingface.co/ibm-granite/granite-4.0-tiny-preview
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-tiny-preview
 
+### granite-guardian-3.2-5b
+
+https://huggingface.co/ibm-granite/granite-guardian-3.2-5b
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-guardian-3.2-5b
+
+### gemma-7b
+
+https://huggingface.co/google/gemma-7b
+
+quay.io/redhat-ai-services/modelcar-catalog:gemma-7b
+
+### llama-3.1-8b-instruct
+
+https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.1-8b-instruct
+
 ### llama-3.2-1b-instruct
 
-https://huggingface.co/ibm-granite/llama-3.2-1b-instruct
+https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-1b-instruct
 
 ### llama-3.2-3b-instruct
 
-https://huggingface.co/ibm-granite/llama-3.2-3b-instruct
+https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct
 
 ### llama-3.2-3b-instruct-quantized.w8a8
 
-https://huggingface.co/ibm-granite/llama-3.2-3b-instruct-quantized.w8a8
+https://huggingface.co/redhatai/Llama-3.2-3B-Instruct-quantized.w8a8
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct-quantized.w8a8
 
 ### llama-3.2-8b-instruct-quantized.w4a16
 
-https://huggingface.co/ibm-granite/llama-3.2-8b-instruct-quantized.w4a16
+https://huggingface.co/redhatai/Llama-3.2-8B-Instruct-quantized.w4a16
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-8b-instruct-quantized.w4a16
 
+### llama-3.2-11b-vision-instruct
+
+https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct
+
+quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct
+
 ### llama-3.2-11b-vision-instruct-fp8-dynamic
 
-https://huggingface.co/neuralmagic/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
+https://huggingface.co/redhatai/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
 
@@ -112,21 +142,45 @@ quay.io/redhat-ai-services/modelcar-catalog:mistral-7b-instruct-v0.3
 
 ### qwen2.5-0.5b-instruct
 
-https://huggingface.co/qwen/qwen2.5-0.5b-instruct
+https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-0.5b-instruct
 
 ### qwen2.5-7b-instruct
 
-https://huggingface.co/qwen/qwen2.5-7b-instruct
+https://huggingface.co/Qwen/Qwen2.5-7B-Instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:qwen2.5-7b-instruct
+
+### qwen3-4b
+
+https://huggingface.co/Qwen/Qwen3-4B
+
+quay.io/redhat-ai-services/modelcar-catalog:qwen3-4b
+
+### qwen3-8b
+
+https://huggingface.co/Qwen/Qwen3-8B
+
+quay.io/redhat-ai-services/modelcar-catalog:qwen3-8b
+
+### qwen3-14b
+
+https://huggingface.co/Qwen/Qwen3-14B
+
+quay.io/redhat-ai-services/modelcar-catalog:qwen3-14b
 
 ### sparse-llama-3.1-8b-2of4
 
 https://huggingface.co/ibm-granite/sparse-llama-3.1-8b-2of4
 
 quay.io/redhat-ai-services/modelcar-catalog:sparse-llama-3.1-8b-2of4
+
+### tinyllama-1.1b-chat-v1.0
+
+https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0
+
+quay.io/redhat-ai-services/modelcar-catalog:tinyllama-1.1b-chat-v1.0
 
 ### whisper-large-v2
 
@@ -139,3 +193,15 @@ quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v2
 https://huggingface.co/RedHatAI/whisper-large-v2-W4A16-G128
 
 quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v2-w4a16-g128
+
+### whisper-large-v3
+
+https://huggingface.co/openai/whisper-large-v3
+
+quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v3
+
+### whisper-large-v3-fp8-dynamic
+
+https://huggingface.co/redhatai/whisper-large-v3-FP8-dynamic
+
+quay.io/redhat-ai-services/modelcar-catalog:whisper-large-v3-fp8-dynamic
