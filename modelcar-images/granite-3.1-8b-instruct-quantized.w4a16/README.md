@@ -1,6 +1,6 @@
 # granite-3.1-8b-instruct-quantized.w4a16
 
-https://huggingface.co/neuralmagic/granite-3.1-8b-instruct-quantized.w4a16
+https://huggingface.co/redhatai/granite-3.1-8b-instruct-quantized.w4a16
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-3.1-8b-instruct-quantized.w4a16
 

@@ -1,6 +1,6 @@
 # llama-3.2-11b-vision-instruct-fp8-dynamic
 
-https://huggingface.co/neuralmagic/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
+https://huggingface.co/redhatai/Llama-3.2-11B-Vision-Instruct-FP8-dynamic
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11b-vision-instruct-fp8-dynamic
 
