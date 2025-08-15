@@ -35,6 +35,7 @@ build:
 	fi
 	"$$@"
 	$(MAKE) date-tag folder=$(folder)
+	$(MAKE) org-tag folder=$(folder)
 
 download:
 	@if [ -z "$(folder)" ]; then
