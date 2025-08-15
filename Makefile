@@ -25,7 +25,8 @@ build:
 	if [ -n "$(HF_TOKEN)" ]; then \
 		build_cmd="$$build_cmd --build-arg HF_TOKEN=$(HF_TOKEN)"; \
 	fi; \
-	eval $$build_cmd
+	eval $$build_cmd; \
+	$(MAKE) date-tag folder=$(folder); \
 
 download:
 	@if [ -z "$(folder)" ]; then \
