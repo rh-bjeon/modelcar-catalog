@@ -8,7 +8,7 @@ MODELCAR_IMAGES = ./modelcar-images
 # $(error HF_TOKEN is not set)
 # endif
 
-.PHONY: build download push build-and-push build-and-push-all
+.PHONY: build download date-tag push build-and-push build-and-push-all
 
 build:
 	@if [ -z "$(folder)" ]; then \
@@ -48,14 +48,14 @@ download:
 
 date-tag:
 	@if [ -z "$(folder)" ]; then \
-		echo "Usage: make push folder=<path-to-folder>"; \
+		echo "Usage: make date-tag folder=<path-to-folder>"; \
 		exit 1; \
 	fi; \
 	tag=$$(basename "$(folder)"); \
-	date-tag=$$(date -u +'%Y%m%dt%H%Mz'); \
-	echo "Date tag: $$date-tag"; \
+	dateTag=$$(date -u +'%Y%m%dt%H%Mz'); \
+	echo "Date tag: $$dateTag"; \
 	echo "Tag: $$tag"; \
-	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$${tag}-$${date-tag}
+	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$${tag}-$${dateTag}
 
 push:
 	@if [ -z "$(folder)" ]; then \
