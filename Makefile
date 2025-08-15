@@ -63,10 +63,22 @@ push:
 		exit 1; \
 	fi; \
 	baseTag=$$(basename "$(folder)"); \
-	imageID=$$(podman images --filter "reference=$(REGISTRY)/$(IMAGE_PREFIX):$$baseTag" --format "{{.ID}}"); \
+	echo "Looking for image: $(REGISTRY)/$(IMAGE_PREFIX):$$baseTag"; \
+	imageID=$$(podman images --filter "reference=$(REGISTRY)/$(IMAGE_PREFIX):$$baseTag" --format "{{.ID}}" | head -1 | tr -d '\n'); \
+
 	echo "Image ID: $$imageID"; \
+	if [ -z "$$imageID" ]; then \
+		echo "Error: No image found with tag $(REGISTRY)/$(IMAGE_PREFIX):$$baseTag"; \
+		exit 1; \
+	fi; \
+
 	tags=$$(podman images --filter "id=$$imageID" --format "{{.Repository}}:{{.Tag}}"); \
 	echo "Tags: $$tags"; \
+	if [ -z "$$tags" ]; then \
+		echo "Error: No tags found for image ID $$imageID"; \
+		exit 1; \
+	fi; \
+
 	for tag in $$tags; do \
 		echo "Pushing image with tag $$tag"; \
 		podman push $(REGISTRY)/$(IMAGE_PREFIX):$$tag; \
