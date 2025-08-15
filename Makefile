@@ -24,11 +24,12 @@ build:
 	tag=$$(basename "$(folder)")
 	image=$(REGISTRY)/$(IMAGE_PREFIX):$$tag
 	echo "Building image with tag $$image"
-	build_cmd="podman build $(folder) -t $$image --platform linux/amd64"
+	# Use `set --` to build argv safely without eval. We then execute the final argv via "$@".
+	set -- podman build "$(folder)" -t "$$image" --platform linux/amd64
 	if [ -n "$(HF_TOKEN)" ]; then
-		build_cmd="$$build_cmd --build-arg HF_TOKEN=$(HF_TOKEN)"
+		set -- "$$@" --build-arg HF_TOKEN="$(HF_TOKEN)"
 	fi
-	eval $$build_cmd
+	"$$@"
 	$(MAKE) date-tag folder=$(folder)
 
 download:
@@ -37,12 +38,15 @@ download:
 		exit 1
 	fi
 	mkdir -p $(folder)/models
-	download_cmd="podman run --rm --platform linux/amd64 -v ./$(folder)/models:/models --env-file $(folder)/downloader.env"
+	# Build the podman run argv incrementally with `set --` and then exec with "$@".
+	set -- podman run --rm --platform linux/amd64 \
+	  -v ./$(folder)/models:/models \
+	  --env-file $(folder)/downloader.env
 	if [ -n "$(HF_TOKEN)" ]; then
-		download_cmd="$$download_cmd -e HF_TOKEN=$(HF_TOKEN)"
+		set -- "$$@" -e HF_TOKEN="$(HF_TOKEN)"
 	fi
-	download_cmd="$$download_cmd $(REGISTRY)/huggingface-downloader:latest"
-	eval $$download_cmd
+	set -- "$$@" $(REGISTRY)/huggingface-downloader:latest
+	"$$@"
 
 date-tag:
 	@if [ -z "$(folder)" ]; then
