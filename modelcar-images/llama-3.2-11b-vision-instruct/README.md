@@ -1,6 +1,6 @@
 # llama-3.2-11B-vision-instruct
 
-https://huggingface.co/Qwen/llama-3.2-11B-vision-instruct
+https://huggingface.co/meta-llama/llama-3.2-11B-vision-instruct
 
 quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-11B-vision-instruct
 
