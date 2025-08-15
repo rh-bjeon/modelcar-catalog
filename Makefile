@@ -21,27 +21,30 @@ build:
 	tag=$$(basename "$(folder)"); \
 	image=$(REGISTRY)/$(IMAGE_PREFIX):$$tag; \
 	echo "Building image with tag $$image"; \
+	build_cmd="podman build $(folder) -t $$image --platform linux/amd64"; \
 	if [ -n "$(HF_TOKEN)" ]; then \
-		podman build $(folder) \
-			-t $$image \
-			--build-arg HF_TOKEN=$(HF_TOKEN) \
-			--platform linux/amd64; \
-	else \
-		podman build $(folder) \
-			-t $$image \
-			--platform linux/amd64; \
-	fi
+		build_cmd="$$build_cmd --build-arg HF_TOKEN=$(HF_TOKEN)"; \
+	fi; \
+	echo "Executing: $$build_cmd"; \
+	eval $$build_cmd
 
 download:
 	@if [ -z "$(folder)" ]; then \
-		echo "Usage: make push folder=<path-to-folder>"; \
+		echo "Usage: make download folder=<path-to-folder>"; \
 		exit 1; \
 	fi; \
 	mkdir -p $(folder)/models; \
-	podman run --rm --platform linux/amd64 \
-		-v ./$(folder)/models:/models \
-		--env-file $(folder)/downloader.env \
-		$(REGISTRY)/huggingface-downloader:latest
+
+	download_cmd="podman run --rm --platform linux/amd64 \
+	-v ./$(folder)/models:/models \
+	--env-file $(folder)/downloader.env"; \
+
+	if [ -n "$(HF_TOKEN)" ]; then \
+		download_cmd="$$download_cmd -e HF_TOKEN=$(HF_TOKEN)"; \
+	fi; \
+
+	download_cmd="$$download_cmd $(REGISTRY)/huggingface-downloader:latest"; \
+	eval $$download_cmd
 
 date-tag:
 	@if [ -z "$(folder)" ]; then \
