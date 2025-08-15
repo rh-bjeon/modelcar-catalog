@@ -25,7 +25,6 @@ build:
 	if [ -n "$(HF_TOKEN)" ]; then \
 		build_cmd="$$build_cmd --build-arg HF_TOKEN=$(HF_TOKEN)"; \
 	fi; \
-	echo "Executing: $$build_cmd"; \
 	eval $$build_cmd
 
 download:
