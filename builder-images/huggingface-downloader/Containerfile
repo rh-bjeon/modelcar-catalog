@@ -2,6 +2,7 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:9.6 as base
 
 # Set the HF_TOKEN with --build-arg HF_TOKEN="hf_..." at build time
 ARG HF_TOKEN
+ENV MODEL_REPO=""
 
 COPY requirements.txt .
 
@@ -11,3 +12,5 @@ RUN microdnf -y install git git-lfs python3-pip && \
     pip3 install -r requirements.txt
 
 COPY download_model.py .
+
+CMD ["python3", "download_model.py", "--model-repo", ${MODEL_REPO}]
