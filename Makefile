@@ -8,7 +8,7 @@ MODELCAR_IMAGES = ./modelcar-images
 # $(error HF_TOKEN is not set)
 # endif
 
-.PHONY: build download date-tag push build-and-push build-and-push-all
+.PHONY: build download date-tag org-tag push build-and-push build-and-push-all
 
 # Ensure each recipe runs in a single shell so variables persist across lines
 .ONESHELL:
@@ -63,6 +63,19 @@ date-tag:
 	echo "Tag: $$tag"
 	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$${tag}-$${dateTag}
 
+org-tag:
+	@if [ -z "$(folder)" ]; then
+		echo "Usage: make org-tag folder=<path-to-folder>"
+		exit 1
+	fi
+	tag=$$(basename "$(folder)")
+	org=$$(basename "$$(dirname "$(folder)")")
+	orgTag="$$org--$$tag"
+	echo "Organization: $$org"
+	echo "Tag: $$tag"
+	echo "Org tag: $$orgTag"
+	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$$orgTag
+
 push:
 	@if [ -z "$(folder)" ]; then
 		echo "Usage: make push folder=<path-to-folder>"
@@ -107,10 +120,16 @@ prune:
 	podman image rm $$image
 
 clean-all:
-	rm -rf $(MODELCAR_IMAGES)/*/models
+	rm -rf $(MODELCAR_IMAGES)/*/*/models
 
-build-and-push-all: $(MODELCAR_IMAGES)/*
-	for folder in $^ ; do
-		$(MAKE) build-and-push folder=$${folder}
-		$(MAKE) prune folder=$${folder}
+build-and-push-all:
+	for orgdir in $(MODELCAR_IMAGES)/* ; do
+		if [ -d "$$orgdir" ]; then
+			for folder in $$orgdir/* ; do
+				if [ -d "$$folder" ] && [ -f "$$folder/Containerfile" ]; then
+					$(MAKE) build-and-push folder="$$folder"
+					$(MAKE) prune folder="$$folder"
+				fi
+			done
+		fi
 	done
