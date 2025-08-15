@@ -107,10 +107,16 @@ prune:
 	podman image rm $$image
 
 clean-all:
-	rm -rf $(MODELCAR_IMAGES)/*/models
+	rm -rf $(MODELCAR_IMAGES)/*/*/models
 
-build-and-push-all: $(MODELCAR_IMAGES)/*
-	for folder in $^ ; do
-		$(MAKE) build-and-push folder=$${folder}
-		$(MAKE) prune folder=$${folder}
+build-and-push-all:
+	for orgdir in $(MODELCAR_IMAGES)/* ; do
+		if [ -d "$$orgdir" ]; then
+			for folder in $$orgdir/* ; do
+				if [ -d "$$folder" ] && [ -f "$$folder/Containerfile" ]; then
+					$(MAKE) build-and-push folder="$$folder"
+					$(MAKE) prune folder="$$folder"
+				fi
+			done
+		fi
 	done

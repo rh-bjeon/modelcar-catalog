@@ -27,12 +27,12 @@ The project includes a Makefile that simplifies building, downloading, and pushi
 Build a ModelCar image for a specific model:
 
 ```bash
-make build folder=modelcar-images/<model-name>
+make build folder=modelcar-images/<organization>/<model-name>
 ```
 
 Example:
 ```bash
-make build folder=modelcar-images/granite-3.1-8b-instruct
+make build folder=modelcar-images/ibm-granite/granite-3.1-8b-instruct
 ```
 
 If the model directory contains a `downloader.env` file, the build process will automatically download the model first.  Alternatively, models that use a two stage build process will download and build the model in a single shot.
@@ -42,7 +42,7 @@ If the model directory contains a `downloader.env` file, the build process will 
 Download model files locally without building the image:
 
 ```bash
-make download folder=modelcar-images/<model-name>
+make download folder=modelcar-images/<organization>/<model-name>
 ```
 
 This requires a `downloader.env` file in the model directory specifying the `MODEL_REPO`.
@@ -52,7 +52,7 @@ This requires a `downloader.env` file in the model directory specifying the `MOD
 Add a timestamped tag to an existing image:
 
 ```bash
-make date-tag folder=modelcar-images/<model-name>
+make date-tag folder=modelcar-images/<organization>/<model-name>
 ```
 
 This creates a tag like `model-name-20240815t1234z` alongside the base tag.
@@ -62,7 +62,7 @@ This creates a tag like `model-name-20240815t1234z` alongside the base tag.
 Push all tags for a model to the registry:
 
 ```bash
-make push folder=modelcar-images/<model-name>
+make push folder=modelcar-images/<organization>/<model-name>
 ```
 
 This pushes both the base tag and any date-tagged versions.
@@ -72,7 +72,7 @@ This pushes both the base tag and any date-tagged versions.
 Build and push a model in one command:
 
 ```bash
-make build-and-push folder=modelcar-images/<model-name>
+make build-and-push folder=modelcar-images/<organization>/<model-name>
 ```
 
 #### Build and Push All Models
@@ -91,7 +91,7 @@ For private models or to avoid rate limiting, set the `HF_TOKEN` environment var
 
 ```bash
 export HF_TOKEN=your_token_here
-make build folder=modelcar-images/<model-name>
+make build folder=modelcar-images/<organization>/<model-name>
 ```
 
 The token will be passed to both the download and build processes.
@@ -105,7 +105,7 @@ make clean-all
 
 Remove a specific image and prune containers:
 ```bash
-make prune folder=modelcar-images/<model-name>
+make prune folder=modelcar-images/<organization>/<model-name>
 ```
 
 ## Available Models
