@@ -8,7 +8,7 @@ MODELCAR_IMAGES = ./modelcar-images
 # $(error HF_TOKEN is not set)
 # endif
 
-.PHONY: build download date-tag push build-and-push build-and-push-all
+.PHONY: build download date-tag org-tag push build-and-push build-and-push-all
 
 # Ensure each recipe runs in a single shell so variables persist across lines
 .ONESHELL:
@@ -62,6 +62,19 @@ date-tag:
 	echo "Date tag: $$dateTag"
 	echo "Tag: $$tag"
 	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$${tag}-$${dateTag}
+
+org-tag:
+	@if [ -z "$(folder)" ]; then
+		echo "Usage: make org-tag folder=<path-to-folder>"
+		exit 1
+	fi
+	tag=$$(basename "$(folder)")
+	org=$$(basename "$$(dirname "$(folder)")")
+	orgTag="$$org--$$tag"
+	echo "Organization: $$org"
+	echo "Tag: $$tag"
+	echo "Org tag: $$orgTag"
+	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$$orgTag
 
 push:
 	@if [ -z "$(folder)" ]; then
