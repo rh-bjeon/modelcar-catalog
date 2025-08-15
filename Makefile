@@ -8,12 +8,15 @@ MODELCAR_IMAGES = ./modelcar-images
 # $(error HF_TOKEN is not set)
 # endif
 
-.PHONY: build push build-and-push build-and-push-all
+.PHONY: build download push build-and-push build-and-push-all
 
 build:
 	@if [ -z "$(folder)" ]; then \
 		echo "Usage: make build folder=<path-to-folder>"; \
 		exit 1; \
+	fi; \
+	if [ -f "$(folder)/downloader.env" ]; then \
+		$(MAKE) download folder=$(folder); \
 	fi; \
 	tag=$$(basename "$(folder)"); \
 	image=$(REGISTRY)/$(IMAGE_PREFIX):$$tag; \
@@ -29,14 +32,42 @@ build:
 			--platform linux/amd64; \
 	fi
 
-push:
+download:
+	@if [ -z "$(folder)" ]; then \
+		echo "Usage: make push folder=<path-to-folder>"; \
+		exit 1; \
+	fi; \
+	mkdir -p $(folder)/models; \
+	podman run --rm --platform linux/amd64 \
+		-v ./$(folder)/models:/models \
+		--env-file $(folder)/downloader.env \
+		$(REGISTRY)/huggingface-downloader:latest
+
+date-tag:
 	@if [ -z "$(folder)" ]; then \
 		echo "Usage: make push folder=<path-to-folder>"; \
 		exit 1; \
 	fi; \
 	tag=$$(basename "$(folder)"); \
-	echo "Pushing image with tag $$tag"; \
-	podman push $(REGISTRY)/$(IMAGE_PREFIX):$$tag
+	date-tag=$$(date -u +'%Y%m%dt%H%Mz'); \
+	echo "Date tag: $$date-tag"; \
+	echo "Tag: $$tag"; \
+	podman tag $(REGISTRY)/$(IMAGE_PREFIX):$$tag $(REGISTRY)/$(IMAGE_PREFIX):$${tag}-$${date-tag}
+
+push:
+	@if [ -z "$(folder)" ]; then \
+		echo "Usage: make push folder=<path-to-folder>"; \
+		exit 1; \
+	fi; \
+	baseTag=$$(basename "$(folder)"); \
+	imageID=$$(podman images --filter "reference=$(REGISTRY)/$(IMAGE_PREFIX):$$baseTag" --format "{{.ID}}"); \
+	echo "Image ID: $$imageID"; \
+	tags=$$(podman images --filter "id=$$imageID" --format "{{.Repository}}:{{.Tag}}"); \
+	echo "Tags: $$tags"; \
+	for tag in $$tags; do \
+		echo "Pushing image with tag $$tag"; \
+		podman push $(REGISTRY)/$(IMAGE_PREFIX):$$tag; \
+	done
 
 build-and-push:
 	@if [ -z "$(folder)" ]; then \
@@ -55,6 +86,9 @@ prune:
 	tag=$$(basename "$(folder)"); \
 	image=$(REGISTRY)/$(IMAGE_PREFIX):$${tag}; \
 	podman image rm $$image;
+
+clean-all:
+	rm -rf $(MODELCAR_IMAGES)/*/models
 
 build-and-push-all: $(MODELCAR_IMAGES)/*
 	for folder in $^ ; do \
