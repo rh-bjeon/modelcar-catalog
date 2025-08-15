@@ -1,6 +1,6 @@
 # Sparse-Llama-3.1-8B-2of4
 
-https://huggingface.co/neuralmagic/Sparse-Llama-3.1-8B-2of4/tree/main
+https://huggingface.co/redhatai/Sparse-Llama-3.1-8B-2of4/tree/main
 
 quay.io/redhat-ai-services/modelcar-catalog:sparse-llama-3.1-8b-2of4
 
