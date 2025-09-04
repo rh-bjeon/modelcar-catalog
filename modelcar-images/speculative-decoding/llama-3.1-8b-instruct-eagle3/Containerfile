@@ -1,0 +1,15 @@
+FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
+
+# The model repo to download
+ENV MODEL_REPO="yuhuili/EAGLE3-LLaMA3.1-Instruct-8B"
+
+# Download the necessary model files
+RUN python3 download_model.py --model-repo ${MODEL_REPO} --allow-patterns "*.json" "*.bin"
+
+# Final image containing only the essential model files
+FROM quay.io/redhat-ai-services/modelcar-catalog:llama-3.1-8b-instruct
+
+COPY --from=base /models /models/llama-3.1-8b-instruct-eagle3
+
+# Set the user to 1001
+USER 1001
