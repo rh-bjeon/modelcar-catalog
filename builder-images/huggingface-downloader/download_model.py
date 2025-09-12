@@ -1,4 +1,5 @@
 import argparse
+import os
 
 from huggingface_hub import snapshot_download
 
@@ -35,12 +36,16 @@ if __name__ == "__main__":
         default="./models",
         type=str,
     )
+
+    default_allow_patterns = ["*.safetensors", "*.json", "*.txt"]
+    allow_patterns = os.environ.get("ALLOW_PATTERNS", default_allow_patterns)
+
     parser.add_argument(
         "-a",
         "--allow-patterns",
         help="(Optional) The allowed patterns to download",
         nargs="+",
-        default=["*.safetensors", "*.json", "*.txt"],
+        default=allow_patterns,
     )
     args = parser.parse_args()
     main(
