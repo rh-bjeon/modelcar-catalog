@@ -1,3 +1,3 @@
 model:
   mode: uri
-  uri: oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct
+  uri: oci://quay.io/bjeon1/modelcar-catalog:llama-3-open-ko-8B
