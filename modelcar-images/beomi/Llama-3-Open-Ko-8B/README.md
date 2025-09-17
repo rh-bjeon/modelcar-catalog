@@ -13,8 +13,15 @@ Once your token has been created, be sure to accept the terms and conditions for
 ```
 podman build modelcar-images/beomi/Llama-3-Open-Ko-8B \
     -t quay.io/bjeon1/modelcar-catalog:Llama-3-Open-Ko-8B \
+    --build-arg HF_TOKEN=$HF_TOKEN \
     --platform linux/amd64
 ```
+
+export HF_TOKEN="hf_..."
+podman build modelcar-images/Llama-3.1-8B-Instruct \
+    -t quay.io/redhat-ai-services/modelcar-catalog:Llama-3.1-8B-Instruct \
+    --build-arg HF_TOKEN=$HF_TOKEN \
+    --platform linux/amd64
 
 ## Deploying Model
 
