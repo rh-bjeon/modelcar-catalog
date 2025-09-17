@@ -11,10 +11,8 @@ This model requires a user-token to authenticate with HuggingFace before pulling
 Once your token has been created, be sure to accept the terms and conditions for this model on the model home page.
 
 ```
-export HF_TOKEN="hf_..."
 podman build modelcar-images/meta-llama/Llama-3-Open-Ko-8B \
     -t quay.io/bjeon1/modelcar-catalog:Llama-3-Open-Ko-8B \
-    --build-arg HF_TOKEN=$HF_TOKEN \
     --platform linux/amd64
 ```
 
