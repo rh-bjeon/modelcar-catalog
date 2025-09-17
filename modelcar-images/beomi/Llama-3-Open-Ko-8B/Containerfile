@@ -1,9 +1,6 @@
 # Base image for the modelcar Granite image
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
-# Set the HF_TOKEN with --build-arg HF_TOKEN="hf_..." at build time
-ARG HF_TOKEN
-
 # The model repo to download
 ENV MODEL_REPO="beomi/Llama-3-Open-Ko-8B"
 
