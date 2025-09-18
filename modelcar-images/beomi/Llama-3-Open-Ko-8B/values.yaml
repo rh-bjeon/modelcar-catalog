@@ -1,3 +1,0 @@
-model:
-  mode: uri
-  uri: oci://quay.io/bjeon1/modelcar-catalog:llama-3-open-ko-8B

@@ -1,0 +1,3 @@
+model:
+  mode: uri
+  uri: oci://quay.io/bjeon1/modelcar-catalog:qwen3-embedding-0.6b
