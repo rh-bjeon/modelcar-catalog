@@ -12,7 +12,7 @@ FROM registry.access.redhat.com/ubi9/ubi-micro:9.6
 
 # Copy only the necessary model files from the base image
 COPY --from=base /models /models
-COPY ./tool_chat_template_mistral.jinja /models
+COPY tool_chat_template_mistral.jinja /models/tool_chat_template_mistral.jinja
 
 # Set the user to 1001
 USER 1001
