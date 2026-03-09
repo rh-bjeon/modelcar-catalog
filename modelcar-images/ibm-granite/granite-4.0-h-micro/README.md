@@ -1,14 +1,14 @@
-# granite-4.0-tiny-preview
+# granite-4.0-h-micro
 
-https://huggingface.co/ibm-granite/granite-4.0-tiny-preview
+https://huggingface.co/ibm-granite/granite-4.0-h-micro
 
-quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-tiny-preview
+quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-h-micro
 
 ## Building Image
 
 ```
-podman build modelcar-images/ibm-granite/granite-4.0-tiny-preview \
-    -t quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-tiny-preview  \
+podman build modelcar-images/ibm-granite/granite-4.0-h-micro \
+    -t quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-h-micro  \
     --platform linux/amd64
 ```
 
@@ -22,7 +22,7 @@ This configuration includes some specific configurations to deploy it on an NVID
 helm repo add redhat-ai-services https://redhat-ai-services.github.io/helm-charts/
 helm repo update redhat-ai-services
 helm upgrade -i granite-40-tiny-preview redhat-ai-services/vllm-kserve \
-    --values modelcar-images/ibm-granite/granite-4.0-tiny-preview/values.yaml
+    --values modelcar-images/ibm-granite/granite-4.0-h-micro/values.yaml
 ```
 
 For more information on the above Helm Chart, you can find the source code for that chart here:

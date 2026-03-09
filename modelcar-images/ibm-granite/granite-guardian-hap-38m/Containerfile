@@ -2,7 +2,7 @@
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
 # The model repo to download
-ENV MODEL_REPO="ibm-granite/granite-4.0-tiny-preview"
+ENV MODEL_REPO="ibm-granite/granite-guardian-hap-38m"
 
 # Download the necessary model files
 RUN python3 download_model.py --model-repo ${MODEL_REPO}

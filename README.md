@@ -178,6 +178,24 @@ https://huggingface.co/ibm-granite/granite-4.0-tiny-preview
 
 quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-tiny-preview
 
+### granite-4.0-h-small
+
+https://huggingface.co/ibm-granite/granite-4.0-h-small
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-h-small
+
+### granite-4.0-h-tiny
+
+https://huggingface.co/ibm-granite/granite-4.0-h-tiny
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-h-tiny
+
+### granite-4.0-h-micro
+
+https://huggingface.co/ibm-granite/granite-4.0-h-micro
+
+quay.io/redhat-ai-services/modelcar-catalog:granite-4.0-h-micro
+
 ### granite-embedding-english-r2
 
 https://huggingface.co/ibm-granite/granite-embedding-english-r2
