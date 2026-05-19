@@ -1,3 +1,5 @@
 model:
   mode: uri
   uri: oci://quay.io/bjeon1/modelcar-catalog:gemma-4-31B-it-speculator.dflash
+  args:
+    - '--speculative-config={"model": "/mnt/models/RedHatAI/gemma-4-31B-it-speculator.dflash", "num_speculative_tokens": 8, "method": "dflash"}'
