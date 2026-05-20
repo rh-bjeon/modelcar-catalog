@@ -1,15 +1,17 @@
+# Base image for the modelcar Granite image
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
 # The model repo to download
 ENV MODEL_REPO="RedHatAI/gemma-4-31B-it-speculator.dflash"
 
 # Download the necessary model files
-RUN python3 download_model.py --model-repo ${MODEL_REPO} --allow-patterns "*.json" "*.bin"
+RUN python3 download_model.py --model-repo ${MODEL_REPO}
 
 # Final image containing only the essential model files
-FROM quay.io/bjeon1/modelcar-catalog:gemma-4-31B-it-FP8-block
+FROM registry.access.redhat.com/ubi9/ubi-micro:9.6
 
-COPY --from=base /models /models/gemma-4-31B-it-speculator.dflash
+# Copy only the necessary model files from the base image
+COPY --from=base /models /models
 
 # Set the user to 1001
 USER 1001
