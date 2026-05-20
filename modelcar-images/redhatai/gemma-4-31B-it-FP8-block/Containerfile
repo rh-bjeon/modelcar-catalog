@@ -2,7 +2,7 @@
 FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 
 # The model repo to download
-ENV MODEL_REPO="RedHatAI/gemma-4-31B-it-speculator.dflash"
+ENV MODEL_REPO="RedHatAI/gemma-4-31B-it-FP8-block"
 
 # Download the necessary model files
 RUN python3 download_model.py --model-repo ${MODEL_REPO}
