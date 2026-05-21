@@ -4,7 +4,7 @@ FROM quay.io/redhat-ai-services/huggingface-downloader:latest as base
 ENV MODEL_REPO="RedHatAI/Qwen3-30B-A3B-speculator.eagle3"
 
 # Download the necessary model files
-RUN python3 download_model.py --model-repo ${MODEL_REPO} --allow-patterns "*.json" "*.bin"
+RUN python3 download_model.py --model-repo ${MODEL_REPO} --allow-patterns "*.json" "*.safetensors" "*.py"
 
 # Final image containing only the essential model files
 FROM quay.io/bjeon1/modelcar-catalog:Qwen3-30B-A3B-FP8-dynamic
