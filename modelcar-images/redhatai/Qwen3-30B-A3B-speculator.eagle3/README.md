@@ -1,13 +1,13 @@
-# gemma-4-31B-it-FP8-block
+# Qwen3-30B-A3B-speculator.eagle3
 
-https://huggingface.co/redhatai/gemma-4-31B-it-FP8-block
+https://huggingface.co/redhatai/Qwen3-30B-A3B-speculator.eagle3
 
-quay.io/redhat-ai-services/modelcar-catalog:gemma-4-31B-it-speculator.dflash
+quay.io/bjeon1/modelcar-catalog:Qwen3-30B-A3B-speculator.eagle3
 
 ## Building Image
 
 ```
-podman build modelcar-images/redhatai/gemma-4-31B-it-speculator.dflash \
-    -t quay.io/bjeon1/modelcar-catalog:gemma-4-31B-it-speculator.dflash  \
+podman build modelcar-images/redhatai/Qwen3-30B-A3B-speculator.eagle3 \
+    -t quay.io/bjeon1/modelcar-catalog:Qwen3-30B-A3B-speculator.eagle3  \
     --platform linux/amd64
 ```
