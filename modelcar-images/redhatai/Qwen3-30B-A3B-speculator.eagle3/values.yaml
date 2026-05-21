@@ -1,0 +1,5 @@
+model:
+  mode: uri
+  uri: oci://quay.io/bjeon1/modelcar-catalog:Qwen3-30B-A3B-speculator.eagle3
+  args:
+    - '--speculative-config={"model": "/mnt/models/Qwen3-30B-A3B-speculator.eagle3", "num_speculative_tokens": 5, "method": "eagle3"}'
